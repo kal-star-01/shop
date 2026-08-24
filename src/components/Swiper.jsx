@@ -8,7 +8,7 @@ import 'swiper/css/autoplay';
 // Maps the legacy `options` object onto swiper props/modules; children already
 // arrive as SwiperSlide elements.
 export default function Swiper({ options = {}, className = '', children }) {
-  const slides = Children.toArray(children).filter((c) => c && c.type && c.type.name === 'SwiperSlide');
+  const slides = Children.toArray(children).filter((c) => c && c.type === SwiperSlide);
   const nav = options.navigation ? true : false;
   return (
     <RealSwiper

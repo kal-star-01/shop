@@ -5,6 +5,8 @@ AndShop e-commerce storefront: a 50-route React SPA with a live catalog store
 detail pages, cart/checkout flows, account + vendor dashboards, and content
 pages (blog, FAQ, contact, lookbook).
 
+- [Demo](https://shop-ecru-mu.vercel.app/)
+
 ## Tech
 
 - React 18 + React Router 6

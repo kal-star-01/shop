@@ -1,0 +1,42 @@
+/* owl-nav controller fix — real owl.carousel renders nav as <button>, but the original
+   theme (vue-owl-carousel) rendered <div>. The theme's container-specific 30x30 rules
+   (`.grocery_slider_box .owl-theme .owl-nav [class*=owl-]` etc.) are overridden by the
+   `button.owl-prev/next` rule in `.slider_button_style`, ballooning our buttons to 45x46
+   with a white border. Restore the intended transparent 30x30 controller so it matches
+   the original's <div class="owl-prev"> arrow. */
+.slider_button_style .owl-carousel .owl-nav button.owl-prev,
+.slider_button_style .owl-carousel .owl-nav button.owl-next {
+  width: 30px !important;
+  height: 30px !important;
+  line-height: 21px !important;
+  margin: 5px !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+  font-size: 14px !important;
+}
+
+/* Product Single Two/Three image-slider nav: the original (swiper v6) renders the
+   controllers as EMPTY buttons whose arrows come from the theme's `::after` swiper-icons
+   font glyph. Real swiper v11 injects an inline <svg class="swiper-navigation-icon">
+   and empties the ::after. Remove the redundant SVG and restore the font-glyph arrow
+   so the controllers match the original (25x35, black bg, white icon). */
+.product-single-2-slider .swiper-button-next .swiper-navigation-icon,
+.product-single-2-slider .swiper-button-prev .swiper-navigation-icon {
+  display: none !important;
+}
+.product-single-2-slider .swiper-button-next,
+.product-single-2-slider .swiper-button-prev {
+  font-family: 'swiper-icons' !important;
+}
+.product-single-2-slider .swiper-button-next::after,
+.product-single-2-slider .swiper-button-prev::after {
+  font-family: 'swiper-icons' !important;
+  font-size: 12px !important;
+  font-weight: 400 !important;
+  text-transform: none !important;
+  letter-spacing: 0 !important;
+  line-height: 1 !important;
+}
+.product-single-2-slider .swiper-button-prev::after { content: 'prev' !important; }
+.product-single-2-slider .swiper-button-next::after { content: 'next' !important; }
